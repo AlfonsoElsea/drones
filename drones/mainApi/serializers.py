@@ -36,5 +36,36 @@ class LoadSerializer(serializers.ModelSerializer):
         model = Load
         fields = '__all__'
 
-    
+    def validate(self, data):
+
+        loaded= Load.objects.filter(drone_id=data['drone'].id).aggregate(load=Sum('medication__weight'))['load']
+        medication = Medication.objects.get(pk=data['medication'].id).weight
+        weight_limit= Drone.objects.get(pk=data['drone'].id).weight_limit
+        
+        if(loaded):
+            if(loaded+medication >weight_limit):       
+                raise serializers.ValidationError({'drone':"Weight exceded!!"})
+        return data
+
+
+        
+
+    def to_representation(self, instance):
+        ret =super().to_representation(instance)
+        
+        try:
+            ret['drone']=instance.id_drone.serial_number
+        except Drone.DoesNotExist:
+            ret['drone']= None
+        except AttributeError:
+            pass
+
+        try:
+            ret['medication']=instance.id_medication.name
+        except Medication.DoesNotExist:
+            ret['medication']= None
+        except AttributeError:
+            pass
+        
+        return ret
 

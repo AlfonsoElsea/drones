@@ -46,7 +46,7 @@ class Drone(models.Model):
     drone_model         = models.CharField(max_length=25, choices=type_drone)
     weight_limit        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)])
     battery_capacity    = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)], )
-    state                = models.CharField(max_length=25, choices=drones_state) 
+    state               = models.CharField(max_length=25, choices=drones_state) 
     # load                = models.ManyToManyField(Medication)
 
     class Meta:

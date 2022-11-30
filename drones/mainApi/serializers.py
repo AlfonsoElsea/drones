@@ -31,7 +31,13 @@ class DroneSerializer(serializers.ModelSerializer):
 class LoadSerializer(serializers.ModelSerializer):
     # drone      = DroneSerializer(required=False)
     # medication = MedicationSerializer(required=False)
-    
+#     slug_re = _lazy_re_compile(r"^[-a-zA-Z0-9_]+\Z")
+# validate_slug = RegexValidator(
+#     slug_re,
+#     # Translators: "letters" means latin letters: a-z and A-Z.
+#     _("Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."),
+#     "invalid",
+# )
     class Meta:
         model = Load
         fields = '__all__'

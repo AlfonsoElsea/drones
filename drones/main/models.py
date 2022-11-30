@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator, MaxLengthValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, MaxLengthValidator, RegexValidator
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -9,9 +9,9 @@ def upload_to_medication(instance, filename):
 
 class Medication(models.Model):
     
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=25, validators=[RegexValidator("^[-a-zA-Z0-9_]+\Z","Incorrect name format")])
     weight = models.IntegerField(validators=[MinValueValidator(0)])
-    code = models.CharField(max_length=25)
+    code = models.CharField(max_length=25,validators=[RegexValidator("^[A-Z0-9_]+\Z","Incorrect name format")])
     image = models.ImageField(upload_to=upload_to_medication)
 
     class Meta:
@@ -42,7 +42,7 @@ class Drone(models.Model):
         ('RETURNING','RETURNING')
     }
    
-    serial_number       = models.IntegerField( validators=[MinValueValidator(0)])
+    serial_number       = models.CharField(max_length=100, validators=[ RegexValidator("^-?\d+\Z","Serial Number must contain only numbers")])
     drone_model         = models.CharField(max_length=25, choices=type_drone)
     weight_limit        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)])
     battery_capacity    = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)], )

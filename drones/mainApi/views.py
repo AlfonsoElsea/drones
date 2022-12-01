@@ -2,11 +2,14 @@ from django.shortcuts import render
 from rest_framework import generics, filters, viewsets,views, status
 from main.models import *
 from .serializers import *
+from .tasks import battery_deplete,low_battery
 
 
 class DroneView(generics.ListCreateAPIView):
     queryset = Drone.objects.all()
     serializer_class= DroneSerializer
+   
+
 
 class GetDroneView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Drone.objects.all()

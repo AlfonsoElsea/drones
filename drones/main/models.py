@@ -45,7 +45,7 @@ class Drone(models.Model):
     serial_number       = models.CharField(max_length=100, validators=[ RegexValidator("^-?\d+\Z","Serial Number must contain only numbers")])
     drone_model         = models.CharField(max_length=25, choices=type_drone)
     weight_limit        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)])
-    battery_capacity    = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)], )
+    battery_capacity    = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)] )
     state               = models.CharField(max_length=25, choices=drones_state) 
     # load                = models.ManyToManyField(Medication)
 
@@ -65,3 +65,8 @@ class Load(models.Model):
 
 
 
+class Log(models.Model):
+    drone          = models.CharField(max_length=100)
+    battery_level       = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)] )
+    state               = models.CharField(max_length=25) 
+    state_changed       = models.BooleanField(default=False)

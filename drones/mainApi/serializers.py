@@ -10,11 +10,36 @@ class MedicationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# class DroneDetailSerializer(serializers.ModelSerializer):
+#     drone = serializers.ReadOnlyField(source='drone.serial_number')
+
+#     class Meta:
+#         model= Load
+#         fields =['drone','medication']
+
+class DroneLoadSerializer(serializers.ModelSerializer):
+    load = serializers.StringRelatedField(many=True)
+    class  Meta:
+        model= Drone
+        fields=['load',]
+
+class DroneBatteryCapacitySerializer(serializers.ModelSerializer):
+    class  Meta:
+        model= Drone
+        fields=['battery_capacity',]
+
 class DroneSerializer(serializers.ModelSerializer):
-    # medication = MedicationSerializer(required=False, many=True)
+    medication = MedicationSerializer(required=False, many=True)
+    # load = DroneDetailSerializer(source='load_set', many=True)
+    # load = serializers.SlugRelatedField(
+    #     many=True,
+    #     queryset= Load.objects.all(),
+    #     slug_field='medication'
+    # )
     class Meta:
         model=Drone
         fields='__all__'
+        
 
     def validate(self, data):
         if len(str(data['serial_number'])) >100:
@@ -23,21 +48,28 @@ class DroneSerializer(serializers.ModelSerializer):
              raise serializers.ValidationError({'battery_capacity':"Battery to low, please recharge first!!"})
 
         return data
-    
+    # def to_representation(self, instance):
+    #     print( instance.load.name)
+    #     ret =super().to_representation(instance)
+    #     try:
+    #         ret['load']=instance.load.medication.name
+    #     except Load.DoesNotExist:
+    #         ret['load']= None
+    #     except AttributeError:
+    #         pass
 
+       
+        
+    #     return ret
 
     
 
 class LoadSerializer(serializers.ModelSerializer):
-    # drone      = DroneSerializer(required=False)
+    # drone      = serializers.StringRelatedField(many=True)
+    # medication      = serializers.StringRelatedField(many=True)
+
     # medication = MedicationSerializer(required=False)
-#     slug_re = _lazy_re_compile(r"^[-a-zA-Z0-9_]+\Z")
-# validate_slug = RegexValidator(
-#     slug_re,
-#     # Translators: "letters" means latin letters: a-z and A-Z.
-#     _("Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."),
-#     "invalid",
-# )
+
     class Meta:
         model = Load
         fields = '__all__'
@@ -58,16 +90,15 @@ class LoadSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         ret =super().to_representation(instance)
-        
         try:
-            ret['drone']=instance.id_drone.serial_number
+            ret['drone']=instance.drone.serial_number
         except Drone.DoesNotExist:
             ret['drone']= None
         except AttributeError:
             pass
 
         try:
-            ret['medication']=instance.id_medication.name
+            ret['medication']=instance.medication.name
         except Medication.DoesNotExist:
             ret['medication']= None
         except AttributeError:

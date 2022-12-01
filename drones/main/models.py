@@ -47,7 +47,7 @@ class Drone(models.Model):
     weight_limit        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)])
     battery_capacity    = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)] )
     state               = models.CharField(max_length=25, choices=drones_state) 
-    # load                = models.ManyToManyField(Medication)
+    load                = models.ManyToManyField(Medication, through='Load')
 
     class Meta:
         """Meta definition for Drone."""
@@ -59,10 +59,12 @@ class Drone(models.Model):
         return str(self.drone_model)+ " "+str(self.serial_number)
 
 class Load(models.Model):
-    medication            = models.ForeignKey(Medication, models.DO_NOTHING,related_name='medication',verbose_name='Medication', db_column='id_medication', null=True, blank=True)
     drone                 = models.ForeignKey(Drone, models.DO_NOTHING,related_name='drone',verbose_name='Drone', db_column='id_drone', null=True, blank=True)
 
+    medication            = models.ForeignKey(Medication, models.DO_NOTHING,related_name='medication',verbose_name='Medication', db_column='id_medication', null=True, blank=True)
 
+    def __str__(self):
+        return self.drone+" has a "+ self.medication+" loaded " 
 
 
 class Log(models.Model):

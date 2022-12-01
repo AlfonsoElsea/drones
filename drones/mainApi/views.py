@@ -15,6 +15,19 @@ class GetDroneView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Drone.objects.all()
     serializer_class = DroneSerializer
 
+class GetAvailableDrones(generics.ListAPIView):
+    queryset= Drone.objects.filter( battery_capacity__gt=25,state='IDLE'
+    # ,weight_limit__gt=Sum('load__weight')
+    )
+    serializer_class= DroneSerializer
+
+class GetDronesLoad(generics.RetrieveAPIView):
+    queryset= Drone.objects.all()
+    serializer_class= DroneLoadSerializer
+
+class GetDronesBatteryLevel(generics.RetrieveAPIView):
+    queryset= Drone.objects.all()
+    serializer_class= DroneBatteryCapacitySerializer
 
 class MedicationView(generics.ListCreateAPIView):
     queryset = Medication.objects.all()

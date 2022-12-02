@@ -40,6 +40,12 @@ class DroneSerializer(serializers.ModelSerializer):
         model=Drone
         fields='__all__'
         
+    def to_representation(self, instance):
+        ret =super().to_representation(instance)
+        ret['loaded']= instance.loaded
+        print(instance.loaded)
+        return ret
+
 
     def validate(self, data):
         if len(str(data['serial_number'])) >100:

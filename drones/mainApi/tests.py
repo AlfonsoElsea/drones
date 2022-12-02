@@ -111,17 +111,17 @@ class MedicationTests(APITestCase):
     Ensure the medication is created
     """
     def test_create_medication(self):
+   
         data = {
             'name':'sjkskjs',
             # '@#$8jjjjhAA-_' ,
             'weight': 100,
             'code': 'AQSWAS998',
-            'image':None
-            # SimpleUploadedFile(name='test_image.jpg',content=b"" ,content_type='image/jpeg') ,
+            'image':  None
+            # SimpleUploadedFile(name='test.jpg',content= b"" ,content_type='image/jpeg') ,
 
         }
         response = self.client.post('/api/medication/', data, format='json')
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Medication.objects.count(), 1)
 

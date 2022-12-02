@@ -7,13 +7,13 @@ from django.db.models import Count, Q, Sum,Subquery,ExpressionWrapper,IntegerFie
 
 
 class DroneView(generics.ListCreateAPIView):
-    queryset = Drone.objects.all().annotate(loaded =Sum('load__weight'))
+    queryset = Drone.objects.all()
     serializer_class= DroneSerializer
    
 
 
 class GetDroneView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Drone.objects.all().annotate(loaded =Sum('load__weight'))
+    queryset = Drone.objects.all()
     serializer_class = DroneSerializer
 
 class GetAvailableDrones(generics.ListAPIView):

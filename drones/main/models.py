@@ -12,7 +12,7 @@ class Medication(models.Model):
     name = models.CharField(max_length=25, validators=[RegexValidator("^[-a-zA-Z0-9_]+\Z","Incorrect name format")])
     weight = models.IntegerField(validators=[MinValueValidator(0)])
     code = models.CharField(max_length=25,validators=[RegexValidator("^[A-Z0-9_]+\Z","Incorrect name format")])
-    image = models.ImageField(upload_to=upload_to_medication)
+    image = models.ImageField(upload_to=upload_to_medication, blank=True, null= True)
 
     class Meta:
         """Meta definition for Medication."""
@@ -26,7 +26,7 @@ class Medication(models.Model):
 
 class Drone(models.Model):
 
-    type_drone={
+    model_drone={
         ('Lightweight','Lightweight'),
         ('Middleweight','Middleweight'),
         ('Cruiseweight','Cruiseweight'),
@@ -43,7 +43,7 @@ class Drone(models.Model):
     }
    
     serial_number       = models.CharField(max_length=100, validators=[ RegexValidator("^-?\d+\Z","Serial Number must contain only numbers")])
-    drone_model         = models.CharField(max_length=25, choices=type_drone)
+    drone_model         = models.CharField(max_length=25, choices=model_drone)
     weight_limit        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)])
     battery_capacity    = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)] )
     state               = models.CharField(max_length=25, choices=drones_state) 

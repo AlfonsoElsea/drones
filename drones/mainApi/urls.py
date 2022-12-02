@@ -8,7 +8,6 @@ urlpatterns = [
     path('available-drones/', GetAvailableDrones.as_view()),
     path('check-load-drones/<int:pk>', GetDronesLoad.as_view()),
     path('check-battery-drones/<int:pk>', GetDronesBatteryLevel.as_view()),
-
     path('drones/<int:pk>', GetDroneView.as_view()),
     path('medication/', MedicationView.as_view()),
     path('medication/<int:pk>', GetMedicationView.as_view()),    

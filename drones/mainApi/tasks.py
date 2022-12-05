@@ -6,6 +6,11 @@ from celery import shared_task
 
 from drones.celery import app as celery_app
 
+
+"""
+This function checks if battery level is below 25 and if it is don't allow
+the state to be loading
+"""
 @shared_task
 def low_battery():
     queryset = Drone.objects.all()
@@ -19,7 +24,9 @@ def low_battery():
         else:
             Log.objects.create(state=drone.state,drone=drone,battery_level=drone.battery_capacity, state_changed=False)
 
-
+"""
+This function emulate the change of battery capacity 
+"""
 @shared_task
 def battery_deplete():
     print("Depleting!!")

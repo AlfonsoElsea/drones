@@ -2,37 +2,47 @@
 Service to communicate with drones made with Django and Django-rest-framework using as database SQlite to ensure portability
 
 Dependencies:
+
 Python3
 Django
 RabbitMQ
 
-Install RabbitMQ and start its service
+Instalation Process:
+
+1.- Download and Install RabbitMQ for you OS and start its service
 https://www.rabbitmq.com/download.html
 
 
-From the folder inside de project run: 
-
-pip install -r requirements.txt
+2.- From the folder inside the drone project run: 
+    2.1-Run: 
+    ```python
+    pip install -r requirements.txt
+    ```
 
 to install Django and its dependencies.
 
 
-Run:
-
-python manage.py runserver
+    2.2-Run: 
+    ```python
+    python manage.py runserver
+    ```
 
 to start de server
 
 
 
-Run
-
-celery -A drones worker -l info -P gevent
+    2.3-Run:
+    ```python
+    celery -A drones worker -l info -P gevent
+    ```
 it will start the Task Queue
 
 And
 
-celery -A drones beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    2.4-Run
+    ```python
+    celery -A drones beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    ```
 
 that runs the Task Scheduler
 

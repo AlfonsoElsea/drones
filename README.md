@@ -11,6 +11,9 @@ Instalation Process:
 
 1.- Download and Install RabbitMQ for you OS and start its service
 https://www.rabbitmq.com/download.html
+    "I recommend to install it with Chocolatey, the package manager as it is pretty straightforward, i you choose to do so this is te command:"
+    choco install rabbitmq
+
 
 
 2.- From the folder inside the drone project run: 

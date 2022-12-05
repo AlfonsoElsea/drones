@@ -15,34 +15,34 @@ https://www.rabbitmq.com/download.html
 
 2.- From the folder inside the drone project run: 
     2.1-Run: 
-    ```python
+    
     pip install -r requirements.txt
-    ```
+    
 
 to install Django and its dependencies.
 
 
     2.2-Run: 
-    ```python
+    
     python manage.py runserver
-    ```
+    
 
 to start de server
 
 
 
     2.3-Run:
-    ```python
+    
     celery -A drones worker -l info -P gevent
-    ```
+    
 it will start the Task Queue
 
 And
 
     2.4-Run
-    ```python
+    
     celery -A drones beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
-    ```
+    
 
 that runs the Task Scheduler
 

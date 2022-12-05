@@ -23,10 +23,10 @@ prompt-toolkit==3.0.33
 pycparser==2.21
 python-crontab==2.6.0
 python-dateutil==2.8.2
-pytz==2022.6
+pytz==2022.1
 six==1.16.0
 sqlparse==0.4.3
-tzdata==2022.7
+tzdata==2022.1
 vine==5.0.0
 wcwidth==0.2.5
 zope.event==4.5.0

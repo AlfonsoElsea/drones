@@ -12,6 +12,7 @@ Instalation Process:
 1.- Download and Install RabbitMQ for you OS and start its service
 https://www.rabbitmq.com/download.html
     "I recommend to install it with Chocolatey, the package manager as it is pretty straightforward, i you choose to do so this is te command:"
+    
     choco install rabbitmq
 
 
@@ -52,13 +53,14 @@ that runs the Task Scheduler
 
 
 ENDPOINTS
-api/drones/
-api/available-drones/
-api/check-load-drones/'drone id'
-api/check-battery-drones/'drone id'
-api/medication/
-api/medication/'medication id'
-api/load/
-api/load/'load id'
+allow to register a drone and show a list of drones /api/drones/
+show the specified drone /api/drones/<drone_id>
+show a list of available drones /api/available-drones/
+show the load of specified drone /api/check-load-drones/<drone_id>
+show battery level of specified drone /api/check-battery-drones/<drone_id>
+allow to register a medication and show a list of medications /api/medication/
+show the specified medication /api/medication/<medication_id>
+allow to load a drone with a medication and show the list of loads /api/load/
+show the specified load /api/load/<load_id>
 
 

@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "1ae3de76-1a21-454b-a0a0-0a96e520585c",
+		"name": "Drone task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22928666"
+	},
+	"item": [
+		{
+			"name": "Create a Drone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "serial_number",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "drone_model",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "weight_limit",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "battery_capacity",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/drones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"drones",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Drone",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "serial_number",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "drone_model",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "weight_limit",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "battery_capacity",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/drones/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"drones",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Medication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/medication/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"medication",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Medication",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/medication/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"medication",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load a Drone with a Medication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "drone",
+							"value": "",
+							"description": "id of a drone",
+							"type": "text"
+						},
+						{
+							"key": "medication",
+							"value": "",
+							"description": "id of a medication",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/load/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"load",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a Load",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "drone",
+							"value": "",
+							"description": "id of a drone",
+							"type": "text"
+						},
+						{
+							"key": "medication",
+							"value": "",
+							"description": "id of a medication",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/load/14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"load",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a list of available Drones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/available-drones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"available-drones",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check the load of the specified Drone",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/check-load-drones/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"check-load-drones",
+						"1"
+					]
+				},
+				"description": "Show a list of the loaded medication in the specified Drone\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get battery level of specified drone",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/check-battery-drones/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"check-battery-drones",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

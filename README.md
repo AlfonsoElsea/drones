@@ -54,45 +54,64 @@ And
 that runs the Task Scheduler
 
 
+The aplication server runs in:
+http://127.0.0.1:8000/
+
+I have included and export of a POSTMAN Collection in a folder named 'Tools' inside the project, it have all the endpints ready to taste.
 
 
-ENDPOINTS.
+API ENDPOINTS.
 
-
-Allow to register a drone and show a list of drones
+POST
 
 /api/drones/
 
-Show the specified drone
+Allow to register a drone and show a list of drones.
 
-/api/drones/<drone_id>
-
-Show a list of available drones
-
-/api/available-drones/
-
-Show the load of specified drone
-
-/api/check-load-drones/<drone_id>
-
-Show battery level of specified drone
-
-/api/check-battery-drones/<drone_id>
-
-Allow to register a medication and show a list of medications
 
 /api/medication/
 
-Show the specified medication
+Allow to register a medication and show a list of medications.
 
-/api/medication/<medication_id>
-
-Allow to load a drone with a medication and show the list of loads
 
 /api/load/
 
-Show the specified load
+Allow to load a drone with a medication and show the list of loads.
+
+
+PUT
+
+/api/drones/<drone_id>
+
+Allow to edit a drone.
+
+
+/api/medication/<medication_id>
+
+Allow to edit a medication.
+
 
 /api/load/<load_id>
+
+Allow to edit a load.
+
+
+GET
+
+/api/available-drones/
+
+Show a list of available drones
+
+
+/api/check-load-drones/<drone_id>
+
+Show the load of specified drone
+
+
+/api/check-battery-drones/<drone_id>
+
+Show battery level of specified drone
+
+
 
 

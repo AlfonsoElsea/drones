@@ -21,7 +21,7 @@ https://www.rabbitmq.com/download.html
 
 2.- From the folder inside the drone project:
 
-    2.1.-Run: 
+2.1.-Run: 
     
         pip install -r requirements.txt
     
@@ -29,7 +29,7 @@ https://www.rabbitmq.com/download.html
 to install Django and its dependencies.
 
 
-    2.2.-Run:
+2.2.-Run:
         
         python manage.py runserver
     
@@ -38,7 +38,7 @@ to start de server
 
 
 
-    2.3.-Run:
+2.3.-Run:
         
         celery -A drones worker -l info -P gevent
     
@@ -46,7 +46,7 @@ it will start the Task Queue
 
 And
 
-    2.4.-Run
+2.4.-Run
         
         celery -A drones beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
     
@@ -54,7 +54,7 @@ And
 that runs the Task Scheduler
 
 
-The aplication server runs in:
+The aplication server runs at:
 http://127.0.0.1:8000/
 
 I have included and export of a POSTMAN Collection in a folder named 'Tools' inside the project, it have all the endpints ready to taste.

@@ -29,7 +29,8 @@ class DroneBatteryCapacitySerializer(serializers.ModelSerializer):
         fields=['battery_capacity',]
 
 class DroneSerializer(serializers.ModelSerializer):
-    medication = MedicationSerializer(required=False, many=True)
+    # medication = MedicationSerializer(required=False, many=True)
+    load = serializers.StringRelatedField(many=True)
     # load = DroneDetailSerializer(source='load_set', many=True)
     # load = serializers.SlugRelatedField(
     #     many=True,
@@ -44,21 +45,11 @@ class DroneSerializer(serializers.ModelSerializer):
 
 
     def validate(self, data):
-        # if len(str(data['serial_number'])) >100:
-        #     raise serializers.ValidationError({'serial_number':"Serial Number must be less than 100 long"})
         if(data['state']=='LOADING' and data['battery_capacity']<25):             
              raise serializers.ValidationError({'battery_capacity':"Battery to low, please recharge first!!"})
 
         return data
-    # def to_representation(self, instance):
-    #     print( instance.load.name)
-    #     ret =super().to_representation(instance)
-    #     try:
-    #         ret['load']=instance.load.medication.name
-    #     except Load.DoesNotExist:
-    #         ret['load']= None
-    #     except AttributeError:
-    #         pass
+   
 
        
         
@@ -93,14 +84,14 @@ class LoadSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret =super().to_representation(instance)
         try:
-            ret['drone']=instance.drone.serial_number
+            ret['drone']=instance.drone.drone_model +" Drone "+instance.drone.serial_number 
         except Drone.DoesNotExist:
             ret['drone']= None
         except AttributeError:
             pass
 
         try:
-            ret['medication']=instance.medication.name
+            ret['medication']=instance.medication.name + " "+str(instance.medication.weight)+"mg"
         except Medication.DoesNotExist:
             ret['medication']= None
         except AttributeError:

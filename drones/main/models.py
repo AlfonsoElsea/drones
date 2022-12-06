@@ -23,7 +23,7 @@ class Medication(models.Model):
         verbose_name_plural = 'Medications'
 
     def __str__(self):
-        return self.name
+        return self.name+' '+str(self.weight)+"mg"
 
 #Model that represents each drone
 class Drone(models.Model):

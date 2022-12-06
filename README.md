@@ -53,14 +53,40 @@ that runs the Task Scheduler
 
 
 ENDPOINTS
-allow to register a drone and show a list of drones /api/drones/
-show the specified drone /api/drones/<drone_id>
-show a list of available drones /api/available-drones/
-show the load of specified drone /api/check-load-drones/<drone_id>
-show battery level of specified drone /api/check-battery-drones/<drone_id>
-allow to register a medication and show a list of medications /api/medication/
-show the specified medication /api/medication/<medication_id>
-allow to load a drone with a medication and show the list of loads /api/load/
-show the specified load /api/load/<load_id>
+Allow to register a drone and show a list of drones
+
+/api/drones/
+
+Show the specified drone
+
+/api/drones/<drone_id>
+
+Show a list of available drones
+
+/api/available-drones/
+
+Show the load of specified drone
+
+/api/check-load-drones/<drone_id>
+
+Show battery level of specified drone
+
+/api/check-battery-drones/<drone_id>
+
+Allow to register a medication and show a list of medications
+
+/api/medication/
+
+Show the specified medication
+
+/api/medication/<medication_id>
+
+Allow to load a drone with a medication and show the list of loads
+
+/api/load/
+
+Show the specified load
+
+/api/load/<load_id>
 
 
